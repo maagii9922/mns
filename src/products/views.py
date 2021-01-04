@@ -7,24 +7,26 @@ from src.products.serializers import ProductSerializer
 from rest_framework.authentication import SessionAuthentication, BasicAuthentication
 from rest_framework.renderers import JSONRenderer
 import json
+from src.website.models import Feedback
 
-@api_view(['GET'])
+
+@api_view(["GET"])
 @permission_classes([])
 def product_list(request):
     """
     List all code products, or create a new snippet.
     """
-    if request.method == 'GET':
+    if request.method == "GET":
         products = Product.objects.all()
         serializer = ProductSerializer(products, many=True)
-        with open('src/products/data.json', 'w') as outfile:
-            json.dump(serializer.data, outfile)
+        with open(
+            "/home/nyamdorj/monoscosmetics/cosmeticFront/src/data/products.json", "w"
+        ) as outfile:
+            json.dump(serializer.data, outfile, indent=4, ensure_ascii=False)
         return Response(serializer.data)
 
 
-
-
-@api_view(['GET', 'PUT', 'DELETE'])
+@api_view(["GET"])
 @permission_classes([])
 def product_detail(request, pk):
     """
@@ -35,17 +37,27 @@ def product_detail(request, pk):
     except Product.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
 
-    if request.method == 'GET':
+    if request.method == "GET":
         serializer = ProductSerializer(product)
         return Response(serializer.data)
 
-    elif request.method == 'PUT':
-        serializer = ProductSerializer(product, data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    elif request.method == 'DELETE':
-        product.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
+# @api_view(['GET'])
+# @permission_classes([])
+# def featured_product(request, pk):
+#     try:
+#         featured = Product.objects.filter()
+
+
+@api_view(["POST"])
+@permission_classes([])
+def feedback(request):
+    """
+    САНАЛ ХҮСЭЛТ ХҮЛЭЭЖ АВАХ
+    """
+    name = request.data["name"]
+    email = request.data["email"]
+    message = request.data["message"]
+    fd = Feedback.objects.create(name=name, email=email, message=message)
+    fd.save()
+    return Response({"result": "ok"})

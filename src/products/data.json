@@ -1,1 +1,34 @@
-[{"category": "\u0410\u0420\u042c\u0421 \u0410\u0420\u0427\u0418\u041b\u0413\u0410\u0410", "brand": "\u0411\u0418\u041e\u0413\u0415\u041d", "name": "dsaf", "price": 15616, "slug": "dsaf", "description": "asdfasfdasdfa", "point": "651651", "quantity": "651651", "thumbimage": "/media/media/productthumb/IMG_0451.JPG", "image": "/media/media/product/IMG_0476.JPG", "discount": "165156", "rate": 65165}]
+[
+    {
+        "id": 1,
+        "category": "ХЯМДРАЛТАЙ",
+        "name": "Үрчлээний эсрэг серум",
+        "rate": 4,
+        "price": 32800,
+        "discount": 28800,
+        "brand": "БИОГЕН",
+        "code": "PM 03",
+        "point": 30,
+        "quantity": 30,
+        "thumbimage": "/media/media/productthumb/Sanitas_sopa_2uokdx7.jpg",
+        "image": "/media/media/product/Biogen_cream_6mDgNQi.jpg",
+        "description": "Үрчлээний эсрэг үйлчилгээтэй өдөр болон шөнийн тосны доор түрхэх серум нь гүн үрчлээг багасган, арьсыг мэдэгдэхүйц чангаруулж хөгшрөлтийн эсрэг эрчимжүүлсэн үйлчилгээтэй. Өглөө, оройд нүүрээ цэвэрлэсний дараа товших байдлаар нимгэн түрхэж хэрэглэнэ.",
+        "slug": "rchleenij-esreg-serum"
+    },
+    {
+        "id": 2,
+        "category": "ҮС АРЧИЛГАА",
+        "name": "Биогэн серум",
+        "rate": 5,
+        "price": 2500,
+        "discount": 2300,
+        "brand": "БИОДЕРМ",
+        "code": "PM 04",
+        "point": 20,
+        "quantity": 2,
+        "thumbimage": "/media/media/productthumb/Biogen_serum_YvG3rFC.jpg",
+        "image": "/media/media/product/Biogen_serum_0x6fk46.jpg",
+        "description": "Бүтээгдэхүүний дэлгэрэнгүй мэдээлэл энд харагдана",
+        "slug": "biogen-serum"
+    }
+]
