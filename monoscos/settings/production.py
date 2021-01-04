@@ -1,6 +1,6 @@
 from .common import *
 
-DEBUG = False
+DEBUG = True
 ALLOWED_HOSTS = [
     "10.0.0.139",
     "localhost",
