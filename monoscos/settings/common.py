@@ -57,11 +57,19 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "corsheaders.middleware.CorsMiddleware",
     "django.middleware.common.CommonMiddleware",
+    "sslify.middleware.SSLifyMiddleware",
 ]
+SECURE_SSL_REDIRECT = True
+
 
 CORS_ORIGIN_ALLOW_ALL = False
 CORS_ALLOW_CREDENTIALS = True
-CORS_ORIGIN_WHITELIST = ("http://localhost:5005", "https://monoscosmetics.mn", "http://10.0.0.153:5005/")
+CORS_ORIGIN_WHITELIST = (
+    "http://localhost:5005",
+    "https://monoscosmetics.mn",
+    "http://10.0.0.153:5005",
+    "https://monoscosmetics.mn",
+)
 ROOT_URLCONF = "monoscos.urls"
 
 TEMPLATES = [
