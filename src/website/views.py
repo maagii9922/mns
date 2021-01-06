@@ -37,7 +37,10 @@ def banner(request):
     if request.method == "GET":
         banner = Banner.objects.all()
         serializer = BannerSerializer(banner, many=True)
-
+        with open(
+            "/var/www/cosmeticFront/src/data/slider/sliderOne.json", "w"
+        ) as outfile:
+            json.dump(serializer.data, outfile, indent=4, ensure_ascii=False)
         return Response(serializer.data)
 
 
