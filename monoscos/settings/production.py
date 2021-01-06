@@ -7,7 +7,15 @@ ALLOWED_HOSTS = [
     "127.0.0.1",
     "www.monoscosmetics.mn",
     "admin.monoscosmetics.mn",
+    "monoscosmetics.mn",
 ]
+
+CORS_ORIGIN_WHITELIST = (
+    "https://monoscosmetics.mn/",
+    "http://10.0.0.153",
+    "http://localhost:5005",
+)
+
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
