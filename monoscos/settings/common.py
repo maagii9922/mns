@@ -61,7 +61,7 @@ MIDDLEWARE = [
 
 CORS_ORIGIN_ALLOW_ALL = False
 CORS_ALLOW_CREDENTIALS = True
-CORS_ORIGIN_WHITELIST = ("http://localhost:5005", "https://monoscosmetics.mn")
+CORS_ORIGIN_WHITELIST = ("http://localhost:5005", "https://monoscosmetics.mn", "http://10.0.0.153:5005/")
 ROOT_URLCONF = "monoscos.urls"
 
 TEMPLATES = [
