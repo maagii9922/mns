@@ -2,7 +2,7 @@ from .common import *
 
 DEBUG = True
 ALLOWED_HOSTS = [
-    "10.0.0.139",
+    "10.0.0.153",
     "localhost",
     "127.0.0.1",
     "www.monoscosmetics.mn",
