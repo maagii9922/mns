@@ -9,7 +9,7 @@ from ckeditor.fields import RichTextField
 class MonthSaleProduct(models.Model):
     picture = models.ImageField(upload_to="media/salemonthproduct")
     alt_text = models.CharField(verbose_name=_("Зургын нэр"), max_length=255)
-    order = models.IntegerField()
+    order = models.IntegerField(verbose_name=_("Эрэмблэх дараалал"))
 
     class Meta:
         verbose_name = _("Сарын онцлох бүтээгдэхүүн")
@@ -24,9 +24,9 @@ class Influencer(models.Model):
     name = models.CharField(verbose_name=_("Нэр"), max_length=255)
     image = models.ImageField(upload_to="media/influencer")
     position = models.CharField(verbose_name=_("Ажлын байр"), max_length=255)
-    order = models.IntegerField()
+    order = models.IntegerField(verbose_name=_("Эрэмблэх дараалал"))
     quote = models.CharField(
-        verbose_name=_("Хэлсэн үг"), max_length=255, null=True, blank=True
+        verbose_name=_("Хэлсэн үг (Шаарлаггүй талбар)"), max_length=255, null=True, blank=True
     )
 
     class Meta:
@@ -44,6 +44,9 @@ class btn(models.Model):
     )
     color = models.CharField(max_length=10, null=True, blank=True, default="red")
 
+    class Meta:
+        verbose_name = _("Баннер туслах товч")
+        verbose_name_plural = _("Баннер туслах товч")
 
 class animationClass(models.Model):
     title = models.CharField(
@@ -56,11 +59,13 @@ class animationClass(models.Model):
         max_length=255, null=True, blank=True, default="slider-one-button"
     )
 
-
+    class Meta:
+        verbose_name = _("Баннер туслах хэсэг")
+        verbose_name_plural = _("Баннер туслах хэсэг")
 class Banner(models.Model):
     title = models.CharField(max_length=1, null=True, blank=True)
     subTitle = models.CharField(max_length=255, null=True, blank=True)
-    image = models.ImageField(upload_to="media/banner")
+    image = models.ImageField(upload_to="media/banner", verbose_name=_("Зураг"))
     btn = models.ForeignKey(btn, on_delete=models.CASCADE)
     animationClass = models.ForeignKey(animationClass, on_delete=models.CASCADE)
 
@@ -71,10 +76,10 @@ class Banner(models.Model):
 
 class introductionOne(models.Model):
     title = models.CharField(
-        max_length=1000,
+        max_length=1000, verbose_name=_("Гарчиг")
     )
-    description = RichTextField()
-    photo = models.ImageField(upload_to="media/introductionOne")
+    description = RichTextField(verbose_name=_("Тайлбар"))
+    photo = models.ImageField(upload_to="media/introductionOne",verbose_name=_("Зураг"))
 
     class Meta:
         verbose_name = _("Танилцуулга бүтээгдэхүүн")
@@ -87,7 +92,7 @@ class introductionOne(models.Model):
 class Reclam(models.Model):
     title = models.CharField(verbose_name=_("Гарчиг"), max_length=255)
     video = models.CharField(verbose_name=_("Бичлэг"), max_length=255)
-    order = models.IntegerField()
+    order = models.IntegerField(verbose_name=_("Эрэмблэх дараалал"))
 
     class Meta:
         verbose_name = _("Реклам")
@@ -95,8 +100,8 @@ class Reclam(models.Model):
 
 
 class MonthlyProduct(models.Model):
-    image = models.ImageField(upload_to="media/monthly")
-    order = models.IntegerField(null=True, blank=True)
+    image = models.ImageField(upload_to="media/monthly", verbose_name=_("Бүтээгдэхүүний зураг"))
+    order = models.IntegerField(null=True, blank=True, verbose_name=_("Эрэмблэх дараалал"))
 
     class Meta:
         verbose_name = _("Сарын онцлох бүтээгдэхүүн")
@@ -105,8 +110,8 @@ class MonthlyProduct(models.Model):
 
 
 class SaleProduct(models.Model):
-    image = models.ImageField(upload_to="media/monthly", null=True, blank=True)
-    order = models.IntegerField(null=True, blank=True)
+    image = models.ImageField(upload_to="media/monthly", null=True, blank=True, verbose_name=_("Бүтээгдэхүүний зураг"))
+    order = models.IntegerField(null=True, blank=True, verbose_name=_("Эрэмблэх дараалал"))
 
     class Meta:
         verbose_name = _("Хямдралтай бүтээгдэхүүн")
