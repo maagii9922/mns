@@ -22,7 +22,7 @@ def blog_list(request):
         blogs = Blog.objects.all()
         serializer = BlogSerializer(blogs, many=True)
         with open(
-            "/var/www/cosmeticFront/src/data/blog/blog.json", "w"
+            "/var/www/cosmeticFront/src/data/blog/blog.json", "w" , encoding='utf8'
         ) as outfile:
             json.dump(serializer.data, outfile, indent=4, ensure_ascii=False)
         return Response(serializer.data)
