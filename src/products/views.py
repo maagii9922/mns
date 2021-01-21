@@ -20,7 +20,7 @@ def product_list(request):
         products = Product.objects.all()
         serializer = ProductSerializer(products, many=True)
         with open(
-            "/var/www/cosmeticFront/src/data/products.json", "w"
+            "/var/www/cosmeticFront/src/data/products.json", "w" , encoding='utf8'
         ) as outfile:
             json.dump(serializer.data, outfile, indent=4, ensure_ascii=False).encode('utf8')
 
