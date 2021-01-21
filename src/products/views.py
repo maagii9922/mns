@@ -22,7 +22,7 @@ def product_list(request):
         with open(
             "/var/www/cosmeticFront/src/data/products.json", "w" , encoding='utf8'
         ) as outfile:
-            json.dump(serializer.data, outfile, indent=4, ensure_ascii=False).encode('utf8')
+            json.dump(serializer.data, outfile, indent=4, ensure_ascii=False)
 
         return Response(serializer.data)
 
