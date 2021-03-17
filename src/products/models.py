@@ -39,27 +39,38 @@ class variation(models.Model):
 
 class Product(models.Model):
     brand = models.CharField(max_length=550, choices=BRAND_CHOICE, default="")
-    category = models.CharField(max_length=550, choices=CATEGORY_CHOICE, default="", verbose_name=_("Ангилал"))
-    code = models.CharField(max_length=10, null=True, blank=True, default="0", verbose_name=_("Код"))
+    category = models.CharField(
+        max_length=550, choices=CATEGORY_CHOICE, default="", verbose_name=_("Ангилал")
+    )
+    code = models.CharField(
+        max_length=10, null=True, blank=True, default="0", verbose_name=_("Код")
+    )
     description = models.TextField()
     image = models.ImageField(upload_to="media/product/", verbose_name=_("Зураг"))
     name = models.CharField(max_length=50, verbose_name=_("Нэр"))
-    point = models.IntegerField(null=True, blank=True, default=5, verbose_name=_("Оноо"))
+    point = models.IntegerField(
+        null=True, blank=True, default=5, verbose_name=_("Оноо")
+    )
     price = models.IntegerField(null=True, blank=True, verbose_name=_("Үнэ"))
     rate = models.IntegerField(null=True, blank=True, verbose_name=_("Үнэлгээ"))
     quantity = models.IntegerField(null=True, blank=True, verbose_name=_("Үлдэгдэл"))
     discount = models.IntegerField(null=True, blank=True, verbose_name=_("Хямдрал"))
-    thumbimage = models.ImageField(upload_to="media/productthumb/", verbose_name=_("Зураг"))
+    thumbimage = models.ImageField(
+        upload_to="media/productthumb/", verbose_name=_("Зураг")
+    )
     description = models.TextField(verbose_name=_("Тайлбар"))
     slug = models.SlugField()
     variation = models.ForeignKey(
         variation, on_delete=models.CASCADE, null=True, blank=True, editable=False
+    )
+    link_to_emonos = models.CharField(
+        null=True, blank=True, verbose_name=_("Имонос линк"), max_length=500
     )
 
     class Meta:
         verbose_name = _("Бүтээгдэхүүн")
         verbose_name_plural = _("Бүтээгдэхүүн")
         ordering = ["id"]
-        
+
     def __str__(self):
         return self.name

@@ -45,4 +45,5 @@ class ProductSerializer(serializers.ModelSerializer):
             "image",
             "description",
             "slug",
+            "link_to_emonos",
         ]
