@@ -1,6 +1,7 @@
 from .common import *
 
 DEBUG = True
+SITE_DOMAIN = "admin.monoscosmetics.mn"
 ALLOWED_HOSTS = [
     "10.0.0.153",
     "localhost",
