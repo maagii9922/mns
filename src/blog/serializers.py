@@ -2,6 +2,7 @@ from rest_framework import serializers
 from src.blog.models import Blog
 from django.conf import settings
 
+
 SEARCH_PATTERN = 'src="/media/uploads/'
 REPLACE_WITH = 'src="{scheme}{domain}/media/uploads/'.format(
     scheme="https://", domain=settings.SITE_DOMAIN
