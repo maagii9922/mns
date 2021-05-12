@@ -15,7 +15,7 @@ ALLOWED_HOSTS = [
 ]
 
 CORS_ORIGIN_WHITELIST = (
-    "https://monoscosmetics.mn/",
+    "https://monoscosmetics.mn",
     "http://10.0.0.153",
     "http://localhost:5005",
 )
@@ -26,7 +26,7 @@ DATABASES = {
         "NAME": "monoscosmetics",
         "USER": "cosmeticuser",
         "PASSWORD": "#DiyjoT42u#M",
-        "HOST": "localhost",
+        "HOST": "10.0.0.153",
         "PORT": "5432",
     }
 }
