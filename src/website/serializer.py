@@ -9,6 +9,10 @@ from src.website.models import (
     introductionOne,
 )
 
+from src.products.serializers import (
+    ProductSerializer
+)
+
 
 class bntSerializer(serializers.ModelSerializer):
     class Meta:
@@ -43,18 +47,33 @@ class IntroductionOneSerialier(serializers.ModelSerializer):
 
 class MonthlyProductSerializer(serializers.ModelSerializer):
     image = serializers.SerializerMethodField()
-
+    id = serializers.CharField(source='product.id')
+    product_image = serializers.CharField(source='product.image')
+    name = serializers.CharField(source='product.name')
+    name_en = serializers.CharField(source='product.name_en')
+    price = serializers.CharField(source='product.price')
+    thumbimage = serializers.CharField(source='product.thumbimage')
+    
     def get_image(self, obj):
         return obj.image.url if obj.image else None
 
     class Meta:
         model = MonthlyProduct
         depth = 0
-        fields = "__all__"
+        # fields = "__all__"
+        fields =['id','image','name','name_en','price','thumbimage','product_image']
+
 
 
 class SaleProductSerializer(serializers.ModelSerializer):
     image = serializers.SerializerMethodField()
+    id = serializers.CharField(source='product.id')
+    product_image = serializers.CharField(source='product.image')
+    name = serializers.CharField(source='product.name')
+    name_en = serializers.CharField(source='product.name_en')
+    price = serializers.CharField(source='product.price')
+    thumbimage = serializers.CharField(source='product.thumbimage')
+
 
     def get_image(self, obj):
         return obj.image.url if obj.image else None
@@ -62,7 +81,9 @@ class SaleProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = SaleProduct
         depth = 0
-        fields = "__all__"
+        # fields = "__all__"
+        fields = ['id','image','name','name_en','price','thumbimage','product_image']
+
 
 
 class InfluencerSerializer(serializers.ModelSerializer):

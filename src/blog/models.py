@@ -19,8 +19,11 @@ TAG_CHOICES = [
 
 class Blog(models.Model):
     title = models.CharField(max_length=255, verbose_name=_("Гарчиг"))
+    title_en = models.CharField(max_length=255, verbose_name=_("Гарчиг_en"))
     description = models.CharField(max_length=500, verbose_name=_("Тайлбар"))
+    description_en = models.CharField(max_length=500, verbose_name=_("Тайлбар_en"))
     content = RichTextUploadingField()
+    content_en = RichTextUploadingField()
     author = models.CharField(
         max_length=55, verbose_name=_("Оруулсан админ"), default="Админ"
     )

@@ -8,6 +8,7 @@ from rest_framework.authentication import SessionAuthentication, BasicAuthentica
 from rest_framework.renderers import JSONRenderer
 import json
 from src.website.models import Feedback
+from rest_framework.pagination import PageNumberPagination
 
 
 @api_view(["GET"])
@@ -17,14 +18,18 @@ def product_list(request):
     List all code products, or create a new snippet.
     """
     if request.method == "GET":
+        paginator = PageNumberPagination()
+        # paginator.page_size = 1
+        if 'size' in request.GET:
+            paginator.page_size  = request.GET['size']
         products = Product.objects.all()
-        serializer = ProductSerializer(products, many=True)
-        with open(
-            "/var/www/cosmeticFront/src/data/products.json", "w" , encoding='utf8'
-        ) as outfile:
-            json.dump(serializer.data, outfile, indent=4, ensure_ascii=False)
+        result_page = paginator.paginate_queryset(products, request)
 
+        serializer = ProductSerializer(result_page, many=True)
+        # serializer = ProductSerializer(products, many=True)
+       
         return Response(serializer.data)
+
 
 
 @api_view(["GET"])
@@ -59,6 +64,7 @@ def feedback(request):
     name = request.data["name"]
     email = request.data["email"]
     message = request.data["message"]
-    fd = Feedback.objects.create(name=name, email=email, message=message)
+    phone = request.data["phone"]
+    fd = Feedback.objects.create(name=name, email=email, message=message, phone=phone)
     fd.save()
     return Response({"result": "ok"})

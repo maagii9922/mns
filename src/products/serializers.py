@@ -34,6 +34,7 @@ class ProductSerializer(serializers.ModelSerializer):
             "id",
             "category",
             "name",
+            "name_en",
             "rate",
             "price",
             "discount",
@@ -44,6 +45,7 @@ class ProductSerializer(serializers.ModelSerializer):
             "thumbimage",
             "image",
             "description",
+            "description_en",
             "slug",
             "link_to_emonos",
         ]

@@ -48,6 +48,7 @@ class Product(models.Model):
     description = models.TextField()
     image = models.ImageField(upload_to="media/product/", verbose_name=_("Зураг"))
     name = models.CharField(max_length=50, verbose_name=_("Нэр"))
+    name_en = models.CharField(max_length=50, verbose_name=_("Нэр_en"))
     point = models.IntegerField(
         null=True, blank=True, default=5, verbose_name=_("Оноо")
     )
@@ -59,6 +60,7 @@ class Product(models.Model):
         upload_to="media/productthumb/", verbose_name=_("Зураг")
     )
     description = models.TextField(verbose_name=_("Тайлбар"))
+    description_en = models.TextField(verbose_name=_("Тайлбар_en"))
     slug = models.SlugField()
     variation = models.ForeignKey(
         variation, on_delete=models.CASCADE, null=True, blank=True, editable=False
@@ -74,3 +76,4 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+
