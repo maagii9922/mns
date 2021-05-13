@@ -9,6 +9,12 @@ from src.website.models import (
     btn,
     animationClass,
     introductionOne,
+    MonProducts
+)
+
+
+from src.products.models import (
+    Product
 )
 
 # Register your models here.
@@ -27,3 +33,10 @@ class FeedbackAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Feedback, FeedbackAdmin)
+
+
+class MonProductsAdmin(admin.ModelAdmin):
+    filter_horizontal = ['product']
+
+admin.site.register(MonProducts, MonProductsAdmin)
+

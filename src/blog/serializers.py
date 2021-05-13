@@ -31,6 +31,7 @@ class BlogSerializer(serializers.ModelSerializer):
             "content_en",
             "author",
             "category",
+            "category_en",
             "tags",
             "publicDate",
             "thumbImage",

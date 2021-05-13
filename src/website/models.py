@@ -8,6 +8,19 @@ from src.products.models import (
 )
 
 # Create your models here.
+class MonProducts(models.Model):
+    keys = models.CharField(verbose_name=_("Түлхүүр үг"), max_length=255)
+    title = models.CharField(verbose_name=_("Гарчиг"), max_length=255)
+    product = models.ManyToManyField(Product)
+
+    class Meta:
+        verbose_name = _("Онцлох бүтээгдэхүүнүүд")
+        verbose_name_plural = _("Онцлох бүтээгдэхүүнүүд")
+       
+
+    def __str__(self):
+        return self.keys
+
 
 
 class MonthSaleProduct(models.Model):

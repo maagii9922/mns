@@ -11,6 +11,13 @@ CATEGORY_CHOICES = [
     ("Мэдээ", "Мэдээ"),
 ]
 
+CATEGORY_CHOICES_EN = [
+    ("ontsloh News", "ontsloh News"),
+    ("Pic News", "Pic News"),
+    ("Body", "Body"),
+    ("News", "News"),
+]
+
 TAG_CHOICES = [
     ("TR", "tricks"),
     ("MU", "make up"),
@@ -31,6 +38,12 @@ class Blog(models.Model):
         max_length=255,
         verbose_name=_("Ангилал"),
         choices=CATEGORY_CHOICES,
+        default="МД",
+    )
+    category_en = models.CharField(
+        max_length=255,
+        verbose_name=_("Ангилал_en"),
+        choices=CATEGORY_CHOICES_EN,
         default="МД",
     )
     tags = models.CharField(

@@ -45,4 +45,37 @@ def blog_detail(request, pk):
 
     if request.method == "GET":
         serializer = BlogSerializer(blog_detail)
-        return Response(serializer.data)
+        return Response(
+            {
+            "en": {
+                "id": serializer.data.get('id'),
+                "title": serializer.data.get('title'),
+                "title_en": serializer.data.get('title_en'),
+                "description": serializer.data.get('description'),
+                "description_en": serializer.data.get('description_en'),
+                "content": serializer.data.get('content'),
+                "content_en": serializer.data.get('content_en'),
+                "author": serializer.data.get('author'),
+                "category": serializer.data.get('category'),
+                "category_en": serializer.data.get('category_en'),
+                "tags": serializer.data.get('tags'),
+                "publicDate": serializer.data.get('publicDate'),
+                "thumbimage": serializer.data.get('thumbimage'),
+                "coverImage": serializer.data.get('coverImage'),
+                "slug": serializer.data.get('slug')
+            },
+            "mn":{
+                "id": serializer.data.get('id'),
+                "title": serializer.data.get('title'),
+                "description": serializer.data.get('description'),
+                "content": serializer.data.get('content'),
+                "author": serializer.data.get('author'),
+                "category": serializer.data.get('category'),
+                "tags": serializer.data.get('tags'),
+                "publicDate": serializer.data.get('publicDate'),
+                "thumbimage": serializer.data.get('thumbimage'),
+                "coverImage": serializer.data.get('coverImage'),
+                "slug": serializer.data.get('slug')
+            }
+        }
+        )

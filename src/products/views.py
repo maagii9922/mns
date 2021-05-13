@@ -45,7 +45,44 @@ def product_detail(request, pk):
 
     if request.method == "GET":
         serializer = ProductSerializer(product)
-        return Response(serializer.data)
+        return Response({
+            "en": {
+                "id": serializer.data.get('id'),
+                "category": serializer.data.get('category'),
+                "category_en": serializer.data.get('category_en'),
+                "name": serializer.data.get('name_en'),
+                "rate": serializer.data.get('rate'),
+                "price": serializer.data.get('price'),
+                "discount": serializer.data.get('discount'),
+                "brand": serializer.data.get('brand'),
+                "brand_en": serializer.data.get('brand_en'),
+                "code": serializer.data.get('code'),
+                "point": serializer.data.get('point'),
+                "quantity": serializer.data.get('quantity'),
+                "thumbimage": serializer.data.get('thumbimage'),
+                "image": serializer.data.get('image'),
+                "description_en": serializer.data.get('description_en'),
+                "slug": serializer.data.get('slug'),
+                "link_to_emonos": serializer.data.get('link_to_emonos')
+            },
+            "mn":{
+                "id": serializer.data.get('id'),
+                "category": serializer.data.get('category'),
+                "name": serializer.data.get('name'),
+                "rate": serializer.data.get('rate'),
+                "price": serializer.data.get('price'),
+                "discount": serializer.data.get('discount'),
+                "brand": serializer.data.get('brand'),
+                "code": serializer.data.get('code'),
+                "point": serializer.data.get('point'),
+                "quantity": serializer.data.get('quantity'),
+                "thumbimage": serializer.data.get('thumbimage'),
+                "image": serializer.data.get('image'),
+                "description": serializer.data.get('description'),
+                "slug": serializer.data.get('slug'),
+                "link_to_emonos": serializer.data.get('link_to_emonos')
+            }
+        })
 
 
 # @api_view(['GET'])

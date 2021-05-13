@@ -7,11 +7,23 @@ from src.website.models import (
     SaleProduct,
     btn,
     introductionOne,
+    Product
 )
 
 from src.products.serializers import (
     ProductSerializer
 )
+
+class MonProductSerializer(serializers.ModelSerializer):
+    title = serializers.SerializerMethodField()
+
+    def __str__(self):
+        return self.title
+
+    class Meta: 
+        model = Product
+        depth = 0
+        fields =  "__all__"
 
 
 class bntSerializer(serializers.ModelSerializer):

@@ -33,12 +33,14 @@ class ProductSerializer(serializers.ModelSerializer):
         fields = [
             "id",
             "category",
+            "category_en",
             "name",
             "name_en",
             "rate",
             "price",
             "discount",
             "brand",
+            "brand_en",
             "code",
             "point",
             "quantity",
@@ -49,3 +51,4 @@ class ProductSerializer(serializers.ModelSerializer):
             "slug",
             "link_to_emonos",
         ]
+

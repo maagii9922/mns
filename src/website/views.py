@@ -16,6 +16,7 @@ from src.website.serializer import (
     IntroductionOneSerialier,
     MonthlyProductSerializer,
     SaleProductSerializer,
+    MonProductSerializer
 )
 from src.website.models import (
     Banner,
@@ -23,8 +24,21 @@ from src.website.models import (
     MonthlyProduct,
     SaleProduct,
     introductionOne,
+    MonProducts
 )
 import json
+
+@api_view(["GET"])
+@permission_classes([])
+def MonProducts(request):
+    if request.method == "GET":
+        MonProducts = MonProducts.objects.all()
+        serializer = MonProductSerializer(MonProducts, many=True)
+        
+        return Response(serializer.data)
+
+
+
 
 """
 Нүүр Баннер зураг

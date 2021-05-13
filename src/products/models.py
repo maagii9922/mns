@@ -15,12 +15,33 @@ CATEGORY_CHOICE = (
     ("Мойл органик", "Мойл органик"),
     ("Мойл спа", "Мойл спа"),
 )
+
+CATEGORY_CHOICE_EN = (
+    ("Skin", "Skin"),
+    ("Sale", "Sale"),
+    ("Үс арчилгаа", "Үс арчилгаа"),
+    ("Бие арчилгаа", "Бие арчилгаа"),
+    ("Гар арчилгаа", "Гар арчилгаа"),
+    ("Санитас ариутгагч", "Санитас ариутгагч"),
+    ("Хүүхэд", "Хүүхэд"),
+    ("Мойл органик", "Мойл органик"),
+    ("Мойл спа", "Мойл спа"),
+)
+
 BRAND_CHOICE = (
     ("БИОГЕН", "Биоген"),
     ("БИОМОН", "Биомон"),
     ("БИОДЕРМ", "Биодерм"),
     ("АЛОЕ", "Алое"),
     ("САНИТАС", "Санитас"),
+)
+
+BRAND_CHOICE_EN = (
+    ("BIOGEN", "Biogen"),
+    ("BIOMEN", "Biomon"),
+    ("BIODERM", "Bioderm"),
+    ("ALOE", "Aloe"),
+    ("SANITAS", "Sanitas"),
 )
 
 
@@ -39,8 +60,12 @@ class variation(models.Model):
 
 class Product(models.Model):
     brand = models.CharField(max_length=550, choices=BRAND_CHOICE, default="")
+    brand_en = models.CharField(max_length=550, choices=BRAND_CHOICE_EN, default="")
     category = models.CharField(
         max_length=550, choices=CATEGORY_CHOICE, default="", verbose_name=_("Ангилал")
+    )
+    category_en = models.CharField(
+        max_length=550, choices=CATEGORY_CHOICE_EN, default="", verbose_name=_("Ангилал_en")
     )
     code = models.CharField(
         max_length=10, null=True, blank=True, default="0", verbose_name=_("Код")

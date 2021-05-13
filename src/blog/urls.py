@@ -7,7 +7,7 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path("news/", views.blog_list, name="blog"),
-    # path("news/<int:pk>", views.blog_detail),
+    path("news/<int:pk>", views.blog_detail),
     url(r"^ckeditor/", include("ckeditor_uploader.urls")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
