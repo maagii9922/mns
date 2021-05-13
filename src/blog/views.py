@@ -60,7 +60,7 @@ def blog_detail(request, pk):
                 "category_en": serializer.data.get('category_en'),
                 "tags": serializer.data.get('tags'),
                 "publicDate": serializer.data.get('publicDate'),
-                "thumbimage": serializer.data.get('thumbimage'),
+                "thumbImage": serializer.data.get('thumbImage'),
                 "coverImage": serializer.data.get('coverImage'),
                 "slug": serializer.data.get('slug')
             },
@@ -73,7 +73,7 @@ def blog_detail(request, pk):
                 "category": serializer.data.get('category'),
                 "tags": serializer.data.get('tags'),
                 "publicDate": serializer.data.get('publicDate'),
-                "thumbimage": serializer.data.get('thumbimage'),
+                "thumbImage": serializer.data.get('thumbImage'),
                 "coverImage": serializer.data.get('coverImage'),
                 "slug": serializer.data.get('slug')
             }

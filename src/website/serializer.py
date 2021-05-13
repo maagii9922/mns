@@ -7,6 +7,7 @@ from src.website.models import (
     SaleProduct,
     btn,
     introductionOne,
+    MonProducts,
     Product
 )
 
@@ -15,15 +16,15 @@ from src.products.serializers import (
 )
 
 class MonProductSerializer(serializers.ModelSerializer):
-    title = serializers.SerializerMethodField()
+    product = ProductSerializer(many=True)
 
     def __str__(self):
         return self.title
 
     class Meta: 
-        model = Product
-        depth = 0
-        fields =  "__all__"
+        model = MonProducts
+        depth = 1
+        fields = ["id", "product"]
 
 
 class bntSerializer(serializers.ModelSerializer):

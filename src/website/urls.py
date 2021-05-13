@@ -8,10 +8,10 @@ from django.conf.urls.static import static
 urlpatterns = [
     path("banner/", views.banner, name="banner"),
     path("introduction/", views.introduction, name="introduction"),
-    path("monthly/", views.monthlyproduct, name="monthly"),
+    path("monthly/", views.monProducts, name="monthly"),
     path("influencer/", views.influencer, name="influencer"),
     path("saleproduct/", views.saleproduct, name="saleproduct"),
-    # path("MonProduct/", views.monproduct, name="MonProduct"),
+    path("MonProducts/", views.monProducts, name="monProduct"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 urlpatterns = format_suffix_patterns(urlpatterns)

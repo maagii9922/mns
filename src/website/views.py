@@ -30,10 +30,10 @@ import json
 
 @api_view(["GET"])
 @permission_classes([])
-def MonProducts(request):
+def monProducts(request):
     if request.method == "GET":
-        MonProducts = MonProducts.objects.all()
-        serializer = MonProductSerializer(MonProducts, many=True)
+        monProducts = MonProducts.objects.filter(keys='monthly').first()
+        serializer = MonProductSerializer(monProducts)
         
         return Response(serializer.data)
 
