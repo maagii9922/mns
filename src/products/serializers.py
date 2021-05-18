@@ -29,8 +29,8 @@ class CategorySerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 class ProductSerializer(serializers.ModelSerializer):
-    category = serializers.CharField(source='category.name')
-    category_en = serializers.CharField(source='category.name_en')
+    category = serializers.CharField(source='category.catname')
+    category_en = serializers.CharField(source='category.catname_en')
 
     class Meta:
         depth = 1

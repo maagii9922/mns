@@ -58,15 +58,15 @@ class variation(models.Model):
         return self.color
 
 class Category(models.Model):
-    name = models.CharField(max_length=550, verbose_name=_("Ангилалын нэр"))
-    name_en = models.CharField(max_length=550, verbose_name=_("Ангилалын нэр_en"))
+    catname = models.CharField(max_length=550, verbose_name=_("Ангилалын нэр"))
+    catname_en = models.CharField(max_length=550, verbose_name=_("Ангилалын нэр_en"))
 
     class Meta:
         verbose_name = _("Ангилал")
         verbose_name_plural = _("Ангилал")
 
     def __str__(self):
-        return self.name
+        return self.catname
 
 
 class Product(models.Model):
@@ -79,7 +79,7 @@ class Product(models.Model):
     #     max_length=550, choices=CATEGORY_CHOICE_EN, default="", verbose_name=_("Ангилал_en")
     # )
     category = models.ForeignKey(
-        Category, on_delete=models.CASCADE, null=True, blank=True, editable=False
+        Category, on_delete=models.CASCADE
     )
     code = models.CharField(
         max_length=10, null=True, blank=True, default="0", verbose_name=_("Код")

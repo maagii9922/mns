@@ -24,7 +24,8 @@ from src.website.models import (
     MonthlyProduct,
     SaleProduct,
     introductionOne,
-    MonProducts
+    MonProducts,
+    Product
 )
 import json
 
@@ -99,8 +100,9 @@ def saleproduct(request):
     #     serializer = SaleProductSerializer(saleproduct, many=True)
     #     return Response(serializer.data)
     if request.method == "GET":
-        monProducts = MonProducts.objects.filter(keys='sales').first()
-        serializer = MonProductSerializer(monProducts)
+        # monProducts = MonProducts.objects.filter(keys='sales').first()
+        products = Product.objects.filter(discount__gt = 0)
+        serializer = ProductSerializer(products)
         
         return Response(serializer.data)
 
