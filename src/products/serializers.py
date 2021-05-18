@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from src.products.models import Product
+from src.products.models import Category, Product
 
 # class ProductSerializer(serializers.Serializer):
 #     brand = serializers.CharField()
@@ -21,8 +21,17 @@ from src.products.models import Product
 #         """
 #         return Product.objects.create(**validated_data)
 
+class CategorySerializer(serializers.ModelSerializer):
+
+    class Meta:
+        depth = 1
+        model = Category
+        fields = "__all__"
 
 class ProductSerializer(serializers.ModelSerializer):
+    category = serializers.CharField(source='category.name')
+    category_en = serializers.CharField(source='category.name_en')
+
     class Meta:
         depth = 1
         model = Product

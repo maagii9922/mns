@@ -19,7 +19,7 @@ class MonProductSerializer(serializers.ModelSerializer):
     product = ProductSerializer(many=True)
 
     def __str__(self):
-        return self.title
+        return self.product
 
     class Meta: 
         model = MonProducts

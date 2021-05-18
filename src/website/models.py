@@ -11,6 +11,7 @@ from src.products.models import (
 class MonProducts(models.Model):
     keys = models.CharField(verbose_name=_("Түлхүүр үг"), max_length=255)
     title = models.CharField(verbose_name=_("Гарчиг"), max_length=255)
+    # title_en = models.CharField(verbose_name=_("Гарчиг_en"), max_length=255)
     product = models.ManyToManyField(Product)
 
     class Meta:

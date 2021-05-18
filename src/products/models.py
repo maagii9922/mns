@@ -4,29 +4,29 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
 # Create your models here.
-CATEGORY_CHOICE = (
-    ("Арьс арчилгаа", "Арьс арчилгаа"),
-    ("Хямдралтай", "Хямдралтай"),
-    ("Үс арчилгаа", "Үс арчилгаа"),
-    ("Бие арчилгаа", "Бие арчилгаа"),
-    ("Гар арчилгаа", "Гар арчилгаа"),
-    ("Санитас ариутгагч", "Санитас ариутгагч"),
-    ("Хүүхэд", "Хүүхэд"),
-    ("Мойл органик", "Мойл органик"),
-    ("Мойл спа", "Мойл спа"),
-)
+# CATEGORY_CHOICE = (
+#     ("Арьс арчилгаа", "Арьс арчилгаа"),
+#     ("Хямдралтай", "Хямдралтай"),
+#     ("Үс арчилгаа", "Үс арчилгаа"),
+#     ("Бие арчилгаа", "Бие арчилгаа"),
+#     ("Гар арчилгаа", "Гар арчилгаа"),
+#     ("Санитас ариутгагч", "Санитас ариутгагч"),
+#     ("Хүүхэд", "Хүүхэд"),
+#     ("Мойл органик", "Мойл органик"),
+#     ("Мойл спа", "Мойл спа"),
+# )
 
-CATEGORY_CHOICE_EN = (
-    ("Skin", "Skin"),
-    ("Sale", "Sale"),
-    ("Үс арчилгаа", "Үс арчилгаа"),
-    ("Бие арчилгаа", "Бие арчилгаа"),
-    ("Гар арчилгаа", "Гар арчилгаа"),
-    ("Санитас ариутгагч", "Санитас ариутгагч"),
-    ("Хүүхэд", "Хүүхэд"),
-    ("Мойл органик", "Мойл органик"),
-    ("Мойл спа", "Мойл спа"),
-)
+# CATEGORY_CHOICE_EN = (
+#     ("Skin", "Skin"),
+#     ("Sale", "Sale"),
+#     ("Үс арчилгаа", "Үс арчилгаа"),
+#     ("Бие арчилгаа", "Бие арчилгаа"),
+#     ("Гар арчилгаа", "Гар арчилгаа"),
+#     ("Санитас ариутгагч", "Санитас ариутгагч"),
+#     ("Хүүхэд", "Хүүхэд"),
+#     ("Мойл органик", "Мойл органик"),
+#     ("Мойл спа", "Мойл спа"),
+# )
 
 BRAND_CHOICE = (
     ("БИОГЕН", "Биоген"),
@@ -57,15 +57,29 @@ class variation(models.Model):
     def __str__(self):
         return self.color
 
+class Category(models.Model):
+    name = models.CharField(max_length=550, verbose_name=_("Ангилалын нэр"))
+    name_en = models.CharField(max_length=550, verbose_name=_("Ангилалын нэр_en"))
+
+    class Meta:
+        verbose_name = _("Ангилал")
+        verbose_name_plural = _("Ангилал")
+
+    def __str__(self):
+        return self.name
+
 
 class Product(models.Model):
     brand = models.CharField(max_length=550, choices=BRAND_CHOICE, default="")
     brand_en = models.CharField(max_length=550, choices=BRAND_CHOICE_EN, default="")
-    category = models.CharField(
-        max_length=550, choices=CATEGORY_CHOICE, default="", verbose_name=_("Ангилал")
-    )
-    category_en = models.CharField(
-        max_length=550, choices=CATEGORY_CHOICE_EN, default="", verbose_name=_("Ангилал_en")
+    # category = models.CharField(
+    #     max_length=550, choices=CATEGORY_CHOICE, default="", verbose_name=_("Ангилал")
+    # )
+    # category_en = models.CharField(
+    #     max_length=550, choices=CATEGORY_CHOICE_EN, default="", verbose_name=_("Ангилал_en")
+    # )
+    category = models.ForeignKey(
+        Category, on_delete=models.CASCADE, null=True, blank=True, editable=False
     )
     code = models.CharField(
         max_length=10, null=True, blank=True, default="0", verbose_name=_("Код")

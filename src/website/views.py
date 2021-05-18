@@ -33,6 +33,7 @@ import json
 def monProducts(request):
     if request.method == "GET":
         monProducts = MonProducts.objects.filter(keys='monthly').first()
+        # monProducts = MonProducts.objects.filter(keys=request.GET['monthly'])
         serializer = MonProductSerializer(monProducts)
         
         return Response(serializer.data)
@@ -93,9 +94,14 @@ def monthlyproduct(request):
 @api_view(["GET"])
 @permission_classes([])
 def saleproduct(request):
+    # if request.method == "GET":
+    #     saleproduct = SaleProduct.objects.all()
+    #     serializer = SaleProductSerializer(saleproduct, many=True)
+    #     return Response(serializer.data)
     if request.method == "GET":
-        saleproduct = SaleProduct.objects.all()
-        serializer = SaleProductSerializer(saleproduct, many=True)
+        monProducts = MonProducts.objects.filter(keys='sales').first()
+        serializer = MonProductSerializer(monProducts)
+        
         return Response(serializer.data)
 
 

@@ -11,7 +11,7 @@ urlpatterns = [
     path("monthly/", views.monProducts, name="monthly"),
     path("influencer/", views.influencer, name="influencer"),
     path("saleproduct/", views.saleproduct, name="saleproduct"),
-    path("MonProducts/", views.monProducts, name="monProduct"),
+    # path("monProducts/", views.monProducts, name="monProduct"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 urlpatterns = format_suffix_patterns(urlpatterns)

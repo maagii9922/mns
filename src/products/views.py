@@ -10,6 +10,28 @@ import json
 from src.website.models import Feedback
 from rest_framework.pagination import PageNumberPagination
 
+@api_view(["GET"])
+@permission_classes([])
+def category_list(request,category):
+    """
+    List all code products, or create a new snippet.
+    """
+    if request.method == "GET":
+        paginator = PageNumberPagination()
+        # paginator.page_size = 1
+        if 'size' in request.GET:
+            paginator.page_size  = request.GET['size']
+        products = Product.objects.filter(category=category)
+        result_page = paginator.paginate_queryset(products, request)
+
+        serializer = ProductSerializer(result_page, many=True)
+        # serializer = ProductSerializer(products, many=True)
+       
+        return Response(serializer.data)
+
+
+
+
 
 @api_view(["GET"])
 @permission_classes([])
