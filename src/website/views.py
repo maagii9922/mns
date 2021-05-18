@@ -9,6 +9,7 @@ from src.products.models import Product
 from src.products.serializers import ProductSerializer
 from rest_framework.authentication import SessionAuthentication, BasicAuthentication
 from rest_framework.renderers import JSONRenderer
+from rest_framework.pagination import PageNumberPagination
 
 from src.website.serializer import (
     BannerSerializer,
@@ -100,9 +101,14 @@ def saleproduct(request):
     #     serializer = SaleProductSerializer(saleproduct, many=True)
     #     return Response(serializer.data)
     if request.method == "GET":
+        paginator = PageNumberPagination()
+        if 'size' in request.GET:
+            paginator.page_size  = request.GET['size']
         # monProducts = MonProducts.objects.filter(keys='sales').first()
-        products = Product.objects.filter(discount__gt = 0)
-        serializer = ProductSerializer(products)
+        products = Product.objects.filter(discount__gt = 0)        
+        result_page = paginator.paginate_queryset(products, request)
+        # serializer = ProductSerializer(products)
+        serializer = ProductSerializer(result_page, many=True)
         
         return Response(serializer.data)
 

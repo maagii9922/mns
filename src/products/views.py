@@ -2,8 +2,8 @@ from django.http.response import JsonResponse
 from rest_framework import status
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
-from src.products.models import Product
-from src.products.serializers import ProductSerializer
+from src.products.models import Category, Product
+from src.products.serializers import ProductSerializer, CategorySerializer
 from rest_framework.authentication import SessionAuthentication, BasicAuthentication
 from rest_framework.renderers import JSONRenderer
 import json
@@ -12,7 +12,7 @@ from rest_framework.pagination import PageNumberPagination
 
 @api_view(["GET"])
 @permission_classes([])
-def category_list(request,category):
+def prodlist(request, product_id):
     """
     List all code products, or create a new snippet.
     """
@@ -21,7 +21,39 @@ def category_list(request,category):
         # paginator.page_size = 1
         if 'size' in request.GET:
             paginator.page_size  = request.GET['size']
-        products = Product.objects.filter(category=category)
+        selectedProd = Product.objects.get(pk=product_id)
+        products = Product.objects.filter(category = selectedProd.category)
+
+
+        result_page = paginator.paginate_queryset(products, request)
+
+        serializer = ProductSerializer(result_page, many=True)
+        # serializer = ProductSerializer(products, many=True)
+       
+        return Response(serializer.data)
+
+
+
+@api_view(["GET"])
+@permission_classes([])
+def category_list(request):
+    if request.method == "GET":
+        cat_list = Category.objects.all()
+        serializer = CategorySerializer(cat_list, many=True)
+        return Response(serializer.data)
+
+@api_view(["GET"])
+@permission_classes([])
+def product_category(request,category_id):
+    """
+    List all code products, or create a new snippet.
+    """
+    if request.method == "GET":
+        paginator = PageNumberPagination()
+        # paginator.page_size = 1
+        if 'size' in request.GET:
+            paginator.page_size  = request.GET['size']
+        products = Product.objects.filter(category=category_id)
         result_page = paginator.paginate_queryset(products, request)
 
         serializer = ProductSerializer(result_page, many=True)

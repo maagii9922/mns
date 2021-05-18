@@ -29,11 +29,11 @@ class CategorySerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 class ProductSerializer(serializers.ModelSerializer):
-    # catname = serializers.CharField(source='category.catname')
-    # catname_en = serializers.CharField(source='category.catname_en')
-    category_catname = serializers.RelatedField(source='category', read_only=True)
+    category = serializers.CharField(source='category.catname')
+    category_en = serializers.CharField(source='category.catname_en')
+    # category_catname = serializers.RelatedField(source='category', read_only=True)
     # category_name_en = serializers.RelatedField(source='category', read_only=True)
-    category_catname_en = serializers.RelatedField(source='category', read_only=True)
+    # category_catname_en = serializers.RelatedField(source='category', read_only=True)
 
     class Meta:
         depth = 1
@@ -44,8 +44,10 @@ class ProductSerializer(serializers.ModelSerializer):
 
         fields = [
             "id",
-            "category_catname",
-            "category_catname_en",
+            # "category_catname",
+            # "category_catname_en",
+            "category",
+            "category_en",
             "name",
             "name_en",
             "rate",

@@ -8,7 +8,9 @@ from django.conf.urls.static import static
 urlpatterns = [
     path("product/", views.product_list, name="product-list"),
     path("product/<int:pk>", views.product_detail),
-    path("product/<category>", views.category_list),
+    path("product/<category_id>", views.product_category),
+    path("product/category", views.category_list),
+    path("product/<product_id>/prodlist", views.prodlist),
     path("feedback", views.feedback, name="other-feedback"),
     url(r"^ckeditor/", include("ckeditor_uploader.urls")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
