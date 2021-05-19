@@ -157,6 +157,7 @@ class SaleProduct(models.Model):
         ordering = ["order"]
 
 
+
 class Feedback(models.Model):
     name = models.CharField(max_length=255, verbose_name=_("Илгээгчийн нэр"))
     name_en = models.CharField(max_length=255, verbose_name=_("Илгээгчийн нэр_en"))
